@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資入門特訓課後問卷</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6f61 0%, #d63031 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .form-content {
+            padding: 40px;
+        }
+        
+        .question-group {
+            margin-bottom: 35px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 25px;
+        }
+        
+        .question-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .question-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+        }
+        
+        .question-number {
+            background: #74b9ff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .rating-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .rating-item {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .rating-item input[type="radio"] {
+            display: none;
+        }
+        
+        .rating-item label {
+            display: block;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .rating-item input[type="radio"]:checked + label {
+            background: #74b9ff;
+            color: white;
+            border-color: #74b9ff;
+            transform: translateY(-2px);
+        }
+        
+        .rating-item label:hover {
+            background: #e3f2fd;
+            transform: translateY(-1px);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #74b9ff;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+        
+        textarea:focus, input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: #74b9ff;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+        }
+        
+        textarea {
+            min-height: 100px;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f1f2f6;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
+        }
+        
+        .required {
+            color: #d63031;
+            font-weight: bold;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .form-content {
+                padding: 25px;
+            }
+            
+            .rating-group {
+                flex-direction: column;
+            }
+            
+            .rating-item {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 投資入門特訓課後問卷</h1>
+            <p>打造您的財富自由之路 - 學習成效調查</p>
+        </div>
+        
+        <!-- 課程核心學習內容總結 -->
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 30px; margin: 0;">
+            <h2 style="color: #2d3436; margin-bottom: 20px; text-align: center;">📚 課程核心學習內容回顧</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #d63031; margin-bottom: 15px;">🎯 四大學習目標達成</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>建立正確投資觀念</strong> - 破除投資迷思，建立長期思維</li>
+                        <li><strong>掌握投資工具</strong> - 學會債券、ETF、基金、股票四大工具運用</li>
+                        <li><strong>學習選股技巧</strong> - GOLD黃金選股法實戰應用</li>
+                        <li><strong>風險控制能力</strong> - 建立投資防護網</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #00b894; margin-bottom: 15px;">💡 關鍵投資觀念</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>讓錢為你工作</strong>：投資目標是讓錢24小時為你賺錢</li>
+                        <li><strong>對抗通膨怪獸</strong>：投資報酬要大於通膨率才能保值</li>
+                        <li><strong>複利的威力</strong>：時間是最強大的投資武器</li>
+                        <li><strong>長期投資王道</strong>：成功投資三要素（選好公司、合理價位、長期持有）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #e17055; margin-bottom: 15px;">⚠️ 四大投資地雷</h3>
+                    <ol style="margin-left: 20px; line-height: 1.8;">
+                        <li>短線交易（十賭九輸）</li>
+                        <li>過度槓桿（債務纏身）</li>
+                        <li>集中投資（風險無處逃）</li>
+                        <li>聽信明牌（當韭菜被收割）</li>
+                    </ol>
+                </div>
+                
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #fdcb6e; margin-bottom: 15px;">🔍 GOLD選股法</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>G</strong>reat Pioneers：選擇具先行者優勢的偉大企業</li>
+                        <li><strong>O</strong>rganic Flywheel：業務具成長潛力的飛輪效應</li>
+                        <li><strong>L</strong>eadership Leverage：優秀領導團隊為企業加乘</li>
+                        <li><strong>D</strong>ollars Maximization：追求企業未來獲利創造長期增值</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <form class="form-content" id="feedbackForm">
+            <!-- 基本資料 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">📊</span>
+                    基本資料
+                </div>
+                <div class="info-grid">
+                    <div>
+                        <label>姓名 <span class="required">*</span></label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div>
+                        <label>年齡層</label>
+                        <select name="age">
+                            <option value="">請選擇</option>
+                            <option value="18-25">18-25歲</option>
+                            <option value="26-35">26-35歲</option>
+                            <option value="36-45">36-45歲</option>
+                            <option value="46-55">46-55歲</option>
+                            <option value="55+">55歲以上</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>投資經驗</label>
+                        <select name="experience">
+                            <option value="">請選擇</option>
+                            <option value="無">完全沒有</option>
+                            <option value="新手">新手(1年以內)</option>
+                            <option value="初級">初級(1-3年)</option>
+                            <option value="中級">中級(3-5年)</option>
+                            <option value="資深">資深(5年以上)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課程整體滿意度 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">1</span>
+                    課程整體滿意度 <span class="required">*</span>
+                </div>
+                <div class="rating-group">
+                    <div class="rating-item">
+                        <input type="radio" name="overall_satisfaction" value="5" id="satisfaction_5" required>
+                        <label for="satisfaction_5">😍 非常滿意</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="overall_satisfaction" value="4" id="satisfaction_4">
+                        <label for="satisfaction_4">😊 滿意</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="overall_satisfaction" value="3" id="satisfaction_3">
+                        <label for="satisfaction_3">😐 普通</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="overall_satisfaction" value="2" id="satisfaction_2">
+                        <label for="satisfaction_2">😕 不滿意</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="overall_satisfaction" value="1" id="satisfaction_1">
+                        <label for="satisfaction_1">😠 非常不滿意</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課程內容評分 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">2</span>
+                    課程內容各部分評分 <span class="required">*</span>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4>投資101基礎觀念</h4>
+                    <div class="rating-group">
+                        <div class="rating-item">
+                            <input type="radio" name="basic_concepts" value="5" id="basic_5" required>
+                            <label for="basic_5">很有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="basic_concepts" value="4" id="basic_4">
+                            <label for="basic_4">有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="basic_concepts" value="3" id="basic_3">
+                            <label for="basic_3">普通</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="basic_concepts" value="2" id="basic_2">
+                            <label for="basic_2">幫助不大</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="basic_concepts" value="1" id="basic_1">
+                            <label for="basic_1">沒有幫助</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4>四大投資地雷警示</h4>
+                    <div class="rating-group">
+                        <div class="rating-item">
+                            <input type="radio" name="investment_traps" value="5" id="traps_5" required>
+                            <label for="traps_5">很有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="investment_traps" value="4" id="traps_4">
+                            <label for="traps_4">有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="investment_traps" value="3" id="traps_3">
+                            <label for="traps_3">普通</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="investment_traps" value="2" id="traps_2">
+                            <label for="traps_2">幫助不大</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="investment_traps" value="1" id="traps_1">
+                            <label for="traps_1">沒有幫助</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4>GOLD選股法</h4>
+                    <div class="rating-group">
+                        <div class="rating-item">
+                            <input type="radio" name="gold_method" value="5" id="gold_5" required>
+                            <label for="gold_5">很有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="gold_method" value="4" id="gold_4">
+                            <label for="gold_4">有幫助</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="gold_method" value="3" id="gold_3">
+                            <label for="gold_3">普通</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="gold_method" value="2" id="gold_2">
+                            <label for="gold_2">幫助不大</label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="gold_method" value="1" id="gold_1">
+                            <label for="gold_1">沒有幫助</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 學習收穫 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">3</span>
+                    這堂課最大的收穫是什麼？（可複選）
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="投資觀念建立" id="gain_1">
+                        <label for="gain_1">建立正確投資觀念</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="風險意識提升" id="gain_2">
+                        <label for="gain_2">提升風險意識</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="投資工具認識" id="gain_3">
+                        <label for="gain_3">認識投資工具</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="選股方法學習" id="gain_4">
+                        <label for="gain_4">學會選股方法</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="長期投資重要性" id="gain_5">
+                        <label for="gain_5">理解長期投資重要性</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="learning_gains" value="複利威力" id="gain_6">
+                        <label for="gain_6">認識複利威力</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課程內容的實用性如何 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">4</span>
+                    課程內容的實用性如何？ <span class="required">*</span>
+                </div>
+                <div class="rating-group">
+                    <div class="rating-item">
+                        <input type="radio" name="practicality" value="5" id="practical_5" required>
+                        <label for="practical_5">🎯 非常實用</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="practicality" value="4" id="practical_4">
+                        <label for="practical_4">📈 實用</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="practicality" value="3" id="practical_3">
+                        <label for="practical_3">📊 普通</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="practicality" value="2" id="practical_2">
+                        <label for="practical_2">📉 不太實用</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="practicality" value="1" id="practical_1">
+                        <label for="practical_1">❌ 完全不實用</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 講師評價 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">5</span>
+                    對李學詩總經理講授方式的評價 <span class="required">*</span>
+                </div>
+                <div class="rating-group">
+                    <div class="rating-item">
+                        <input type="radio" name="instructor_rating" value="5" id="instructor_5" required>
+                        <label for="instructor_5">👨‍🏫 非常棒</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="instructor_rating" value="4" id="instructor_4">
+                        <label for="instructor_4">👍 很好</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="instructor_rating" value="3" id="instructor_3">
+                        <label for="instructor_3">👌 普通</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="instructor_rating" value="2" id="instructor_2">
+                        <label for="instructor_2">👎 不太好</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="instructor_rating" value="1" id="instructor_1">
+                        <label for="instructor_1">❌ 很差</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課程時間長度 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">6</span>
+                    60分鐘的課程時間安排
+                </div>
+                <div class="rating-group">
+                    <div class="rating-item">
+                        <input type="radio" name="time_length" value="太短" id="time_1">
+                        <label for="time_1">⏰ 太短</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="time_length" value="剛好" id="time_2">
+                        <label for="time_2">✅ 剛好</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="time_length" value="太長" id="time_3">
+                        <label for="time_3">⏳ 太長</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推薦意願 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">7</span>
+                    您會推薦這堂課給朋友嗎？ <span class="required">*</span>
+                </div>
+                <div class="rating-group">
+                    <div class="rating-item">
+                        <input type="radio" name="recommend" value="5" id="recommend_5" required>
+                        <label for="recommend_5">🚀 強烈推薦</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="recommend" value="4" id="recommend_4">
+                        <label for="recommend_4">👍 會推薦</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="recommend" value="3" id="recommend_3">
+                        <label for="recommend_3">🤔 可能推薦</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="recommend" value="2" id="recommend_2">
+                        <label for="recommend_2">👎 不太會推薦</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" name="recommend" value="1" id="recommend_1">
+                        <label for="recommend_1">❌ 不會推薦</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 後續學習需求 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">8</span>
+                    您希望後續學習哪些進階主題？（可複選）
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="技術分析" id="topic_1">
+                        <label for="topic_1">技術分析進階</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="基本面分析" id="topic_2">
+                        <label for="topic_2">基本面深度分析</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="資產配置" id="topic_3">
+                        <label for="topic_3">資產配置策略</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="ETF投資" id="topic_4">
+                        <label for="topic_4">ETF投資實戰</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="債券投資" id="topic_5">
+                        <label for="topic_5">債券投資策略</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="future_topics" value="退休規劃" id="topic_6">
+                        <label for="topic_6">退休投資規劃</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下一步行動計畫 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">💰</span>
+                    聽完課後，你的下一步是？（可複選）
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="繼續躺平" id="action_1">
+                        <label for="action_1">🛋️ 在家躺平，繼續當快樂月光族</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="開始記帳" id="action_2">
+                        <label for="action_2">📱 下載記帳APP，開始控制亂花錢</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="狂K理財" id="action_3">
+                        <label for="action_3">📚 狂追理財YouTuber，惡補投資知識</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="開戶投資" id="action_4">
+                        <label for="action_4">💳 開證券戶，正式踏入投資世界</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="定期定額" id="action_5">
+                        <label for="action_5">🔄 開始定期定額買ETF，實踐課程理念</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="next_actions" value="第一桶金" id="action_6">
+                        <label for="action_6">🎯 設定目標：畢業前賺到人生第一桶金</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 建議與回饋 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">9</span>
+                    對課程的建議與回饋
+                </div>
+                <textarea name="feedback" placeholder="請提供您寶貴的意見與建議，幫助我們改善課程品質..."></textarea>
+            </div>
+
+            <!-- 最印象深刻的內容 -->
+            <div class="question-group">
+                <div class="question-title">
+                    <span class="question-number">10</span>
+                    課程中最印象深刻的內容或金句
+                </div>
+                <textarea name="memorable_content" placeholder="請分享讓您印象最深刻的內容、概念或金句..."></textarea>
+            </div>
+
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">🎯 提交問卷</button>
+                <p style="margin-top: 15px; color: #636e72; font-size: 14px;">
+                    感謝您的寶貴意見，這將幫助我們提供更好的課程體驗！
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 收集表單數據
+            const formData = new FormData(this);
+            const data = {};
+            
+            // 處理單選和文本輸入
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    // 如果key已存在，轉為數組
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // 處理複選框
+            const checkboxGroups = ['learning_gains', 'future_topics', 'next_actions'];
+            checkboxGroups.forEach(group => {
+                const checkboxes = document.querySelectorAll(`input[name="${group}"]:checked`);
+                data[group] = Array.from(checkboxes).map(cb => cb.value);
+            });
+            
+            // 模擬提交（實際應用中這裡會發送到服務器）
+            console.log('問卷數據:', data);
+            
+            // 顯示提交成功訊息
+            alert('🎉 感謝您的回饋！問卷已成功提交。\n\n我們會持續改善課程品質，為您提供更好的學習體驗！');
+            
+            // 可以在這裡添加實際的數據傳送邏輯
+            // 例如：發送到Google Forms、後端API等
+        });
+        
+        // 添加一些互動效果
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // 為選中的選項添加動畫效果
+                this.nextElementSibling.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.nextElementSibling.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
